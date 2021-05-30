@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Đăng ký provider</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" th:href="@{/resources/images/icons/favicon.ico}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/vendor/bootstrap/css/bootstrap.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/fonts/iconic/css/material-design-iconic-font.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/vendor/animate/animate.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/vendor/css-hamburgers/hamburgers.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/vendor/animsition/css/animsition.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/vendor/select2/select2.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/vendor/daterangepicker/daterangepicker.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/main.css}">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+<div class="limiter">
+    <div class="container-login100" style="background-image: url('/resources/img/bg-01.jpg');">
+        <div style="width: 800px" class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+
+            <form  class="login100-form validate-form" action="/register" method="post" enctype="application/x-www-form-urlencoded">
+					<span class="login100-form-title p-b-49">
+						Đăng ký ứng dụng
+					</span>
+                <th:block th:switch="${status}">
+                    <h1 style="text-align: center;background: #25ca07;border-radius: 20px;padding: 10px" th:case="true">Đăng ký thành công</h1>
+                    <h1 style="text-align: center;background: #f50c0c;border-radius: 20px;padding: 10px" th:case="false">Đăng ký không thành công</h1>
+                </th:block>
+                <div class="wrap-input100 validate-input" data-validate="Client ID">
+                    <input class="w-100" style="height: 50px" type="text" name="clientId" placeholder="Client ID">
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Client Secrect">
+                    <input class="w-100" style="height: 50px" type="text" name="clientSecrect" placeholder="Client Secrect">
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Webhook Url">
+                    <input class="w-100" style="height: 50px" type="text" name="urlWebhook" placeholder="Client webhook url">
+                </div>
+                <div class="container-login100-form-btn mt-3">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn">
+                           Đăng ký
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--===============================================================================================-->
+<script th:src="@{/resources/vendor/jquery/jquery-3.2.1.min.js}"></script>
+<!--===============================================================================================-->
+<script th:src="@{/resources/vendor/animsition/js/animsition.min.js}"></script>
+<!--===============================================================================================-->
+<script th:src="@{/resources/vendor/bootstrap/js/popper.js}"></script>
+<script th:src="@{/resources/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<!--===============================================================================================-->
+<script th:src="@{/resources/vendor/select2/select2.min.js}"></script>
+<!--===============================================================================================-->
+<script th:src="@{/resources/vendor/daterangepicker/moment.min.js}"></script>
+<script th:src="@{/resources/vendor/daterangepicker/daterangepicker.js}"></script>
+<!--===============================================================================================-->
+<script th:src="@{/resources/vendor/countdowntime/countdowntime.js}"></script>
+<!--===============================================================================================-->
+<script th:src="@{/resources/js/main.js}"></script>
+<script th:src="@{/resources/js/payment.js}"></script>
+
+</body>
+</html>

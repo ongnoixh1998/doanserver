@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Thanh toán điện tử</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" th:href="@{/resources/images/icons/favicon.ico}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/resources/vendor/bootstrap/css/bootstrap.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/resources/fonts/iconic/css/material-design-iconic-font.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/resources/vendor/animate/animate.css}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" th:href="@{/resources/vendor/css-hamburgers/hamburgers.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/resources/vendor/animsition/css/animsition.min.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/resources/vendor/select2/select2.min.css}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" th:href="@{/resources/vendor/daterangepicker/daterangepicker.css}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/resources/css/util.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/resources/css/main.css}">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('/resources/img/bg-01.jpg');">
+			<div style="width: 800px" class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+				<th:block th:switch="${success}">
+					<form th:case="true" class="login100-form validate-form" method="get" action="/payment/submit">
+					<span class="login100-form-title p-b-49">
+						Thanh toán điện tử
+					</span>
+						<input name="token" th:value="${token}">
+						<div class="wrap-input100 validate-input " data-validate = "Mã hóa đơn">
+							<input class="w-100" style="height: 50px" type="text" placeholder="Mã hóa đơn" th:value="${order.id}" readonly>
+						</div>
+						<div class="wrap-input100 validate-input" data-validate="Số tiền thanh toán">
+							<input class="w-100" style="height: 50px" type="text" placeholder="Số tiền thanh toán" th:value="${#numbers.formatDecimal(order.amount, 1, 'DEFAULT', 0, 'DEFAULT')+'VND'}" readonly>
+						</div>
+						<div class="wrap-input100 validate-input" data-validate="Mô tả">
+							<input class="w-100" style="height: 50px" type="text" name="description" placeholder="Mô tả">
+						</div>
+						<div class="wrap-input100 validate-input" data-validate="Email khách hàng">
+							<input class="w-100" style="height: 50px" type="text" name="email" placeholder="Email khách hàng">
+						</div>
+						<div class="wrap-input100 validate-input" data-validate="SDT khách hàng">
+							<input class="w-100" style="height: 50px" type="text" name="phoneNumber" placeholder="SDT khách hàng">
+						</div>
+						<div class="row bpm-list pt-3">
+							<th:block th:each="bpmitem : ${bpm}">
+								<div th:if="${bpmitem.type.equals(1)}" style="cursor: pointer" class="col-2 bpm-item" th:attr="data-bankid=${bpmitem.id}">
+									<img class="w-100" th:src="${bpmitem.bank_logo}">
+								</div>
+							</th:block>
+
+						</div>
+
+						<div class="container-login100-form-btn mt-3">
+							<div class="wrap-login100-form-btn">
+								<div class="login100-form-bgbtn"></div>
+								<button class="login100-form-btn btn-submit-payment">
+									Thanh toán
+								</button>
+							</div>
+						</div>
+
+					</form>
+					<h1 th:case="*">Phiên thanh toán bị lỗi không thể thanh toán</h1>
+				</th:block>
+
+			</div>
+		</div>
+	</div>
+
+<!--===============================================================================================-->
+	<script th:src="@{/resources/vendor/jquery/jquery-3.2.1.min.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{/resources/vendor/animsition/js/animsition.min.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{/resources/vendor/bootstrap/js/popper.js}"></script>
+	<script th:src="@{/resources/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{/resources/vendor/select2/select2.min.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{/resources/vendor/daterangepicker/moment.min.js}"></script>
+	<script th:src="@{/resources/vendor/daterangepicker/daterangepicker.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{/resources/vendor/countdowntime/countdowntime.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{/resources/js/main.js}"></script>
+	<script th:src="@{/resources/js/payment.js}"></script>
+
+</body>
+</html>
